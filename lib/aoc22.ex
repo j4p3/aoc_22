@@ -11,14 +11,14 @@ defmodule Aoc22 do
   end
 
   @spec run(integer(), integer() | nil) :: any()
-  def run(day, part \\ nil) do
-    day = day
-    |> num_word()
+  def run(day_num, part \\ nil) do
+    day = day_num
+    |> word_for_num()
     |> String.capitalize()
 
-    apply(:"Aoc22.#{day}", :"#{num_word(part)}", [])
+    apply(:"Elixir.Aoc22.#{day}", :"#{word_for_num(part)}", [])
   end
 
-  defp num_word(nil), do: "run"
-  defp num_word(day_number), do: Numbers.to_word(day_number)
+  defp word_for_num(nil), do: "run"
+  defp word_for_num(day_number), do: Numbers.to_word(day_number)
 end

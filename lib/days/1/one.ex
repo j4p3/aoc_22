@@ -18,14 +18,12 @@ defmodule Aoc22.One do
 
   def one(input_type \\ :input, input_num \\ 1) do
     parse_input(input_type, input_num)
-    |> build_calorie_inventory_list()
     |> Enum.map(&Enum.sum/1)
     |> Enum.max()
   end
 
   def two(input_type \\ :input, input_num \\ 1) do
     parse_input(input_type, input_num)
-    |> build_calorie_inventory_list()
     |> Enum.map(&Enum.sum/1)
     |> Enum.sort(:desc)
     |> Enum.take(3)
@@ -44,5 +42,6 @@ defmodule Aoc22.One do
 
   defp parse_input(input_type, input_num) do
     Files.file_for(@day, input_type, input_num)
+    |> build_calorie_inventory_list()
   end
 end
