@@ -6,4 +6,19 @@ defmodule Aoc22.Util.Strings do
     String.splitter(body, delimiter, trim: true)
     |> Enum.map(&apply(transformation_fn, [&1]))
   end
+
+  @spec to_ints(String.t()) :: [integer()]
+  def to_ints(body) do
+    body
+    |> String.to_charlist()
+    |> Enum.map(fn char ->
+      if char >= 97 do
+        # ASCII lowercase start (1)
+        char - 96
+      else
+        # ASCII uppercase start (27)
+        char - 38
+      end
+    end)
+  end
 end
