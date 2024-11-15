@@ -10,6 +10,13 @@ defmodule Aoc22.Util.Strings do
   @spec to_ints(String.t()) :: [integer()]
   def to_ints(body) do
     body
+    |> String.codepoints()
+    |> Enum.map(&String.to_integer/1)
+  end
+
+  @spec to_ascii_ints(String.t()) :: [integer()]
+  def to_ascii_ints(body) do
+    body
     |> String.to_charlist()
     |> Enum.map(fn char ->
       if char >= 97 do

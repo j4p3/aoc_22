@@ -44,7 +44,7 @@ defmodule Aoc22.Three do
 
   def evaluate_priorities(common_letters) do
     common_letters
-    |> Enum.map(&Strings.to_ints/1)
+    |> Enum.map(&Strings.to_ascii_ints/1)
     |> List.flatten()
     |> Enum.sum()
   end
